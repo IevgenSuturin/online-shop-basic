@@ -20,6 +20,15 @@ public class ProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Product> productList = productService.getAll();
+        PageGenerator pageGenerator = PageGenerator.instance();
+        HashMap<String, Object> parameters = new HashMap<>();
+
+        parameters.put("products", productList);
+
+        String page = pageGenerator.getPage("products", parameters);
+        response.getWriter().write(page);
+
     }
 
     public void setProductService(ProductService productService) {
