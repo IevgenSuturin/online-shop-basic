@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// TODO: add delete product mapping on POST request to /product/delete/* where * is product id
+// DONE TODO: add delete product mapping on POST request to /product/delete/* where * is product id
 public class DeleteProductServlet extends HttpServlet {
     private ProductService productService = (ProductService) ServiceLocator.getService("productService");
 

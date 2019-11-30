@@ -14,7 +14,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
-// TODO: return page with list of products
+// DONE TODO: return page with list of products
 public class ProductsServlet extends HttpServlet {
     private ProductService productService = (ProductService) ServiceLocator.getService("productService");
 

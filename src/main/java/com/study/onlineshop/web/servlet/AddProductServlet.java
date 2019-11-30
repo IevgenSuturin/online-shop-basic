@@ -14,9 +14,10 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
-// TODO: display add product page on GET request for /product/add
-// TODO: add product on POST request for /product/add
+// DONE TODO: display add product page on GET request for /product/add
+// DONE TODO: add product on POST request for /product/add
 public class AddProductServlet extends HttpServlet {
+    ProductService productService = (ProductService) ServiceLocator.getService("productService");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,6 +29,16 @@ public class AddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        double price = Double.valueOf(request.getParameter("price"));
+        if(name == null || name.isEmpty() || price <= 0d){
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+            Product product =new Product();
+            product.setName(name);
+            product.setPrice(price);
+            productService.add(product);
+            response.sendRedirect("/products");
+        }
     }
-
 }
