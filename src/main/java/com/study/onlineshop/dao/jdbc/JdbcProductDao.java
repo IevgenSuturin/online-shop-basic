@@ -3,12 +3,14 @@ package com.study.onlineshop.dao.jdbc;
 import com.study.onlineshop.dao.ProductDao;
 import com.study.onlineshop.dao.jdbc.mapper.ProductRowMapper;
 import com.study.onlineshop.entity.Product;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class JdbcProductDao implements ProductDao {
 
     private static final String GET_ALL_SQL = "SELECT id, name, price FROM product";
@@ -18,6 +20,10 @@ public class JdbcProductDao implements ProductDao {
     private static final ProductRowMapper PRODUCT_ROW_MAPPER = new ProductRowMapper();
 
     private DataSource dataSource;
+
+    public JdbcProductDao(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public List<Product> getAll() {

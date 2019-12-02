@@ -1,12 +1,12 @@
 <web-app>
     <servlet>
-        <servlet-name>myspringdispatcher</servlet-name>
+        <servlet-name>webmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlrt-mapping>
-        <servlet-name>myspringdispatcher</servlet-name>
+    <servlet-mapping>
+        <servlet-name>webmvc</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlrt-mapping>
+    </servlet-mapping>
 </web-app>
